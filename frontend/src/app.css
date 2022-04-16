@@ -1,10 +1,17 @@
+.marker{
+  z-index: 1;
+}
+
+.popup {
+  z-index: 2;
+}
+
 .card{
   width: 250px;
   height: 250px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-
 }
 
 label{
