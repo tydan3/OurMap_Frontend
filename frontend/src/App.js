@@ -8,6 +8,7 @@ import { format } from "timeago.js";
 function App() {
   const currentUser = "Jane";
   const [pins, setPins] = useState([]);
+  const [newPlace, setNewPlace] = useState(null);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -29,8 +30,21 @@ function App() {
     getPins();
   }, []);
 
-  const handleMarkerClick = (id) => {
+  const handleMarkerClick = (id, lat, long) => {
     setCurrentPlaceId(id);
+    setViewport({
+      ...viewport,
+      latitude: lat,
+      longitude: long,
+    });
+  };
+
+  const handleAddClick = (e) => {
+    const [long, lat] = e.lngLat;
+    setNewPlace({
+      lat: lat,
+      long: long,
+    });
   };
 
   return (
@@ -40,6 +54,8 @@ function App() {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
+        onDblClick={handleAddClick}
+        // transitionDuration="200"
       >
         {pins.map((p) => (
           <>
@@ -55,7 +71,7 @@ function App() {
                   color: p.username === currentUser ? "gold" : "tomato",
                   cursor: "pointer",
                 }}
-                onClick={() => handleMarkerClick(p._id)}
+                onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
               />
             </Marker>
             {p._id === currentPlaceId && (
@@ -64,7 +80,7 @@ function App() {
                 longitude={p.long}
                 latitude={p.lat}
                 closeButton={true}
-                closeOnClick={true}
+                closeOnClick={false}
                 anchor="left"
                 onClose={() => setCurrentPlaceId(null)}
               >
@@ -91,6 +107,35 @@ function App() {
             )}
           </>
         ))}
+        {newPlace && (
+          <Popup
+            className="popup"
+            longitude={newPlace.long}
+            latitude={newPlace.lat}
+            closeButton={true}
+            closeOnClick={false}
+            anchor="left"
+            onClose={() => setNewPlace(null)}
+          >
+            <div>
+              <form>
+                <label>Title</label>
+                <input placeholder="Enter a title" />
+                <label>Review</label>
+                <textarea placeholder="Tell us something about this place." />
+                <label>Rating</label>
+                <select>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+                <button className="submitButton">Add Pin</button>
+              </form>
+            </div>
+          </Popup>
+        )}
       </ReactMapGL>
     </div>
   );
