@@ -29,5 +29,26 @@
   padding: 5px;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
   background-color: red;
+}
+
+.success {
+  color: green;
+  font-size: 12px;
+  text-align: center;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  text-align: center;
+}
+
+.registerCancel{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+  color: red;
 }

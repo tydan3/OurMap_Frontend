@@ -57,7 +57,7 @@ input::placeholder, textarea::placeholder{
   color: rgb(167, 161, 161);
 }
 
-.submitButton{
+.addpin{
   border: none;
   padding: 5px;
   border-radius: 5px;
@@ -71,6 +71,7 @@ input::placeholder, textarea::placeholder{
   padding: 5px;
   border-radius: 5px;
   color: white;
+  cursor: pointer;
 }
 
 .signout{
@@ -78,9 +79,10 @@ input::placeholder, textarea::placeholder{
 }
 .signin{
   background-color: red;
+  margin-right: 5px;
 }
 .register{
-  background-color: lightsalmon;
+  background-color: red;
 }
 .buttons,.signout{
   position: absolute;

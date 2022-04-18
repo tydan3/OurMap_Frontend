@@ -5,16 +5,18 @@ import "./app.css";
 import axios from "axios";
 import { format } from "timeago.js";
 import Register from "./components/Register";
+import Signin from "./components/Signin";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [pins, setPins] = useState([]);
+  const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
   const [rating, setRating] = useState(0);
-
-  const [currentPlaceId, setCurrentPlaceId] = useState(null);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showSignin, setShowSignin] = useState(false);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -84,6 +86,7 @@ function App() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
         onDblClick={handleAddClick}
+        doubleClickZoom={false}
         // transitionDuration="200"
       >
         {pins.map((p) => (
@@ -163,7 +166,7 @@ function App() {
                   <option value="4">4</option>
                   <option value="5">5</option>
                 </select>
-                <button className="submitButton">Add Pin</button>
+                <button className="addpin">Add Pin</button>
               </form>
             </div>
           </Popup>
@@ -172,11 +175,22 @@ function App() {
           <button className="button signout">Sign out</button>
         ) : (
           <div className="buttons">
-            <button className="button signin">Sign in</button>
-            <button className="button register">Register</button>
+            <button
+              className="button signin"
+              onClick={() => setShowSignin(true)}
+            >
+              Sign in
+            </button>
+            <button
+              className="button register"
+              onClick={() => setShowRegister(true)}
+            >
+              Register
+            </button>
           </div>
         )}
-        <Register></Register>
+        {showSignin && <Signin setShowSignin={setShowSignin} />}
+        {showRegister && <Register setShowRegister={setShowRegister} />}
       </ReactMapGL>
     </div>
   );
