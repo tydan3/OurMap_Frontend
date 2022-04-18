@@ -4,9 +4,10 @@ import { Room, Star } from "@material-ui/icons";
 import "./app.css";
 import axios from "axios";
 import { format } from "timeago.js";
+import Register from "./components/Register";
 
 function App() {
-  const currentUser = "Daniel";
+  const [currentUser, setCurrentUser] = useState(null);
   const [pins, setPins] = useState([]);
   const [newPlace, setNewPlace] = useState(null);
   const [title, setTitle] = useState(null);
@@ -41,6 +42,8 @@ function App() {
       latitude: lat,
       longitude: long,
     });
+    // close new pin forms
+    setNewPlace(null);
   };
 
   const handleAddClick = (e) => {
@@ -49,6 +52,8 @@ function App() {
       lat: lat,
       long: long,
     });
+    // close opened pins
+    setCurrentPlaceId(null);
   };
 
   const handleSubmit = async (e) => {
@@ -87,13 +92,13 @@ function App() {
               className="marker"
               longitude={p.long}
               latitude={p.lat}
-              offsetLeft={-viewport.zoom * 3}
-              offsetTop={-viewport.zoom * 3}
+              offsetLeft={-viewport.zoom * 2}
+              offsetTop={-viewport.zoom * 2}
             >
               <Room
                 style={{
-                  fontSize: viewport.zoom * 6,
-                  color: p.username === currentUser ? "goldenrod" : "firebrick",
+                  fontSize: viewport.zoom * 4,
+                  color: p.username === currentUser ? "lightsalmon" : "red",
                   cursor: "pointer",
                 }}
                 onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
@@ -163,6 +168,15 @@ function App() {
             </div>
           </Popup>
         )}
+        {currentUser ? (
+          <button className="button signout">Sign out</button>
+        ) : (
+          <div className="buttons">
+            <button className="button signin">Sign in</button>
+            <button className="button register">Register</button>
+          </div>
+        )}
+        <Register></Register>
       </ReactMapGL>
     </div>
   );

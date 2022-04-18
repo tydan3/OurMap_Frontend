@@ -8,9 +8,9 @@
 
 label{
   width: max-content;
-  color: tomato;
+  color: red;
   font-size: 15px;
-  border-bottom: .5px solid tomato;
+  border-bottom: .5px solid red;
   margin: 3px 0;
 }
 
@@ -62,6 +62,29 @@ input::placeholder, textarea::placeholder{
   padding: 5px;
   border-radius: 5px;
   color: white;
-  background-color: tomato;
+  background-color: red;
   cursor: pointer;
 }
+
+.button {
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+.signout{
+  background-color: red;
+}
+.signin{
+  background-color: red;
+}
+.register{
+  background-color: lightsalmon;
+}
+.buttons,.signout{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
