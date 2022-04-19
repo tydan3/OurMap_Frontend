@@ -9,7 +9,7 @@ import Signin from "./components/Signin";
 
 function App() {
   const myStorage = window.localStorage;
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins, setPins] = useState([]);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
@@ -79,6 +79,11 @@ function App() {
     }
   };
 
+  const handleSignout = () => {
+    myStorage.removeItem("user");
+    setCurrentUser(null);
+  };
+
   return (
     <div className="App">
       <ReactMapGL
@@ -102,7 +107,7 @@ function App() {
               <Room
                 style={{
                   fontSize: viewport.zoom * 4,
-                  color: p.username === currentUser ? "lightsalmon" : "red",
+                  color: p.username === currentUser ? "red" : "lightsalmon",
                   cursor: "pointer",
                 }}
                 onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
@@ -173,7 +178,9 @@ function App() {
           </Popup>
         )}
         {currentUser ? (
-          <button className="button signout">Sign out</button>
+          <button className="button signout" onClick={handleSignout}>
+            Sign out
+          </button>
         ) : (
           <div className="buttons">
             <button
