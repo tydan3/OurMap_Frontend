@@ -25,23 +25,27 @@ router.post("/register", async (req, res) => {
 });
 
 //login
-router.post("/login", async (req, res) => {
+router.post("/signin", async (req, res) => {
   try {
     //find user
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(400).json("Wrong username or password");
+    if (!user) {
+      res.status(400).json("Wrong username or password!");
+    }
 
     //validate password
     const validPassword = await bcrypt.compare(
       req.body.password,
       user.password
     );
-    !validPassword && res.status(400).json("Wrong username or password");
+    if (!validPassword) {
+      res.status(400).json("Wrong username or password!");
+    }
 
-    //send response
+    //send res
     res.status(200).json({ _id: user._id, username: user.username });
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json();
   }
 });
 

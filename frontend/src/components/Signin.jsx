@@ -16,7 +16,7 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
     };
 
     try {
-      const res = await axios.post("/users/login", user);
+      const res = await axios.post("/users/signin", user);
       myStorage.setItem("user", res.data.username);
       setCurrentUser(res.data.username);
       setShowSignin(false);
