@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "homepage": "http://tydan3.github.io/OurMap",
+  "homepage": "http://tydan3.github.io/OurMap_Frontend",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
