@@ -101,13 +101,13 @@ function App() {
               className="marker"
               longitude={p.long}
               latitude={p.lat}
-              offsetLeft={-viewport.zoom * 2}
-              offsetTop={-viewport.zoom * 2}
+              offsetLeft={-viewport.zoom * 3}
+              offsetTop={-viewport.zoom * 3}
             >
               <Room
                 style={{
-                  fontSize: viewport.zoom * 4,
-                  color: p.username === currentUser ? "red" : "lightsalmon",
+                  fontSize: viewport.zoom * 6,
+                  color: p.username === currentUser ? "red" : "orange",
                   cursor: "pointer",
                 }}
                 onClick={() => handleMarkerClick(p._id, p.lat, p.long)}

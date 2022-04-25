@@ -1,6 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "http://tydan3.github.io/OurMap",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.4",
@@ -9,15 +10,18 @@
     "@testing-library/react": "^12.0.0",
     "@testing-library/user-event": "^13.2.1",
     "axios": "^0.26.1",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-map-gl": "^6.1.18",
+    "react-map-gl": "5.2.5",
     "react-scripts": "^5.0.0",
     "timeago.js": "^4.0.2",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -40,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8800/api"
+  "proxy": "http://myenvironment-env.eba-s8ip46nt.us-west-2.elasticbeanstalk.com/api"
 }
