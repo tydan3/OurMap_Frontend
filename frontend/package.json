@@ -44,5 +44,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://myenvironment-env.eba-s8ip46nt.us-west-2.elasticbeanstalk.com/api"
+  "proxy": "https://ourmapserver.click/api"
 }
