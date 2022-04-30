@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.css": "/OurMap_Frontend/static/css/main.0de69f0a.css",
+    "main.js": "/OurMap_Frontend/static/js/main.8e96a8f3.js",
+    "index.html": "/OurMap_Frontend/index.html"
+  },
+  "entrypoints": [
+    "static/css/main.0de69f0a.css",
+    "static/js/main.8e96a8f3.js"
+  ]
+}
