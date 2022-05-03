@@ -1,7 +1,6 @@
 import "./register.css";
 import { Room, Cancel } from "@material-ui/icons";
 import { useState, useRef } from "react";
-import axios from "axios";
 
 export default function Register({ setShowRegister }) {
   const [success, setSuccess] = useState(false);
@@ -18,14 +17,32 @@ export default function Register({ setShowRegister }) {
       password: passwordRef.current.value,
     };
 
-    try {
-      await axios.post("/users/register", newUser);
-      setError(false);
-      setSuccess(true);
-    } catch (error) {
-      setError(true);
-      setSuccess(false);
-    }
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newUser),
+    };
+    fetch("https://ourmapserver.click/api/users/register", requestOptions)
+      .then(async (response) => {
+        const isJson = response.headers
+          .get("content-type")
+          ?.includes("application/json");
+        const data = isJson && (await response.json());
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+        setError(false);
+        setSuccess(true);
+      })
+      .catch((error) => {
+        console.error("Register error!", error);
+        setError(true);
+        setSuccess(false);
+      });
   };
 
   return (

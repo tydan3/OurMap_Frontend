@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import { Room, Star } from "@material-ui/icons";
 import "./app.css";
-import axios from "axios";
 import { format } from "timeago.js";
 import Register from "./components/Register";
 import Signin from "./components/Signin";
 
 function App() {
+  const myUrl = "https://ourmapserver.click";
   const myStorage = window.localStorage;
   const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins, setPins] = useState([]);
@@ -27,15 +27,25 @@ function App() {
   });
 
   useEffect(() => {
-    const getPins = async () => {
-      try {
-        const res = await axios.get("/pins");
-        setPins(res.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    getPins();
+    fetch(myUrl + "/api/pins")
+      .then(async (response) => {
+        const isJson = response.headers
+          .get("content-type")
+          ?.includes("application.json");
+        const data = isJson && (await response.json());
+
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        setPins(data);
+      })
+      .catch((error) => {
+        console.error("Error getting pins!", error);
+      });
   }, []);
 
   const handleMarkerClick = (id, lat, long) => {
@@ -69,14 +79,33 @@ function App() {
       lat: newPlace.lat,
       long: newPlace.long,
     };
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newPin),
+    };
+    fetch(myUrl + "/api/pins", requestOptions)
+      .then(async (response) => {
+        const isJson = response.headers
+          .get("content-type")
+          ?.includes("application/json");
+        const data = isJson && (await response.json());
 
-    try {
-      const res = await axios.post("/pins", newPin);
-      setPins([...pins, res.data]);
-      setNewPlace(null);
-    } catch (err) {
-      console.log(err);
-    }
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+
+        setPins([...pins, data]);
+      })
+      .catch((error) => {
+        console.error("Sign in error!", error);
+      });
+
+    setNewPlace(null);
+    console.log(err);
   };
 
   const handleSignout = () => {
@@ -124,15 +153,15 @@ function App() {
                 onClose={() => setCurrentPlaceId(null)}
               >
                 <div className="card">
-                  <label>Place</label>
+                  <label>Title</label>
                   <h4 className="place">{p.title}</h4>
-                  <label>Review</label>
+                  <label>Note</label>
                   <p className="desc">{p.desc}</p>
                   <label>Rating</label>
                   <div className="stars">
                     {Array(p.rating).fill(<Star className="star" />)}
                   </div>
-                  <label>Information</label>
+                  <label>User</label>
                   <span className="username">
                     Created by <b>{p.username}</b>{" "}
                   </span>
@@ -156,21 +185,21 @@ function App() {
               <form onSubmit={handleSubmit}>
                 <label>Title</label>
                 <input
-                  placeholder="Enter a title"
+                  placeholder="Enter a title for your pin"
                   onChange={(e) => setTitle(e.target.value)}
                 />
-                <label>Review</label>
+                <label>Note</label>
                 <textarea
-                  placeholder="Tell us something about this place."
+                  placeholder="What did you do here? How was it?"
                   onChange={(e) => setDesc(e.target.value)}
                 />
                 <label>Rating</label>
                 <select onChange={(e) => setRating(e.target.value)}>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                  <option value="5">5 (Great)</option>
+                  <option value="4">4 (Good)</option>
+                  <option value="3">3 (Okay)</option>
+                  <option value="2">2 (Bad)</option>
+                  <option value="1">1 (Awful)</option>
                 </select>
                 <button className="addpin">Add Pin</button>
               </form>
