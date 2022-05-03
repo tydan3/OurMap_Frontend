@@ -49,7 +49,7 @@ export default function Register({ setShowRegister }) {
     <div className="registerContainer">
       <div className="logo">
         <Room />
-        OurMap
+        OurMaps
       </div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="username" ref={userRef} />

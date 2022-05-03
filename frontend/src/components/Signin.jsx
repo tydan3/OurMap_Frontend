@@ -50,7 +50,7 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
     <div className="signinContainer">
       <div className="logo">
         <Room />
-        OurMap
+        OurMaps
       </div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="username" ref={userRef} />
