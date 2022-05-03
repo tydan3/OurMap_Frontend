@@ -31,7 +31,7 @@ function App() {
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
-          ?.includes("application.json");
+          ?.includes("application/json");
         const data = isJson && (await response.json());
 
         // check for error response
@@ -43,9 +43,7 @@ function App() {
 
         setPins(data);
       })
-      .catch((error) => {
-        console.error("Error getting pins!", error);
-      });
+      .catch((error) => console.error("Error retrieving pins!", error));
   }, []);
 
   const handleMarkerClick = (id, lat, long) => {
@@ -84,6 +82,7 @@ function App() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newPin),
     };
+
     fetch(myUrl + "/api/pins", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
@@ -99,13 +98,11 @@ function App() {
         }
 
         setPins([...pins, data]);
+        setNewPlace(null);
       })
       .catch((error) => {
-        console.error("Sign in error!", error);
+        console.error("Error submitting pin!", error);
       });
-
-    setNewPlace(null);
-    console.log(err);
   };
 
   const handleSignout = () => {
@@ -122,7 +119,7 @@ function App() {
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
         onDblClick={handleAddClick}
         doubleClickZoom={false}
-        // transitionDuration="200"
+        transitionDuration="20"
       >
         {pins.map((p) => (
           <>
