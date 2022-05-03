@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.css": "/OurMap_Frontend/static/css/main.0de69f0a.css",
-    "main.js": "/OurMap_Frontend/static/js/main.04119a55.js",
-    "index.html": "/OurMap_Frontend/index.html"
+    "main.css": "/static/css/main.0de69f0a.css",
+    "main.js": "/static/js/main.94e2c404.js",
+    "index.html": "/index.html"
   },
   "entrypoints": [
     "static/css/main.0de69f0a.css",
-    "static/js/main.04119a55.js"
+    "static/js/main.94e2c404.js"
   ]
 }
