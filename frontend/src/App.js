@@ -119,7 +119,7 @@ function App() {
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
         onDblClick={handleAddClick}
         doubleClickZoom={false}
-        transitionDuration="20"
+        // transitionDuration="20"
       >
         {pins.map((p) => (
           <>
