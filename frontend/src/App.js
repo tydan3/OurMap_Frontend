@@ -5,6 +5,7 @@ import "./app.css";
 import { format } from "timeago.js";
 import Register from "./components/Register";
 import Signin from "./components/Signin";
+import Howto from "./components/Howto";
 
 function App() {
   const myUrl = "https://ourmapserver.click";
@@ -18,6 +19,7 @@ function App() {
   const [rating, setRating] = useState(0);
   const [showRegister, setShowRegister] = useState(false);
   const [showSignin, setShowSignin] = useState(false);
+  const [showHowto, setShowHowto] = useState(false);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -209,11 +211,8 @@ function App() {
           </button>
         ) : (
           <div className="buttons">
-            <button
-              className="button signin"
-              onClick={() => setShowSignin(true)}
-            >
-              Sign in
+            <button className="button howto" onClick={() => setShowHowto(true)}>
+              How to use
             </button>
             <button
               className="button register"
@@ -221,8 +220,15 @@ function App() {
             >
               Register
             </button>
+            <button
+              className="button signin"
+              onClick={() => setShowSignin(true)}
+            >
+              Sign in
+            </button>
           </div>
         )}
+        {showHowto && <Howto setShowHowto={setShowHowto} />}
         {showRegister && <Register setShowRegister={setShowRegister} />}
         {showSignin && (
           <Signin
