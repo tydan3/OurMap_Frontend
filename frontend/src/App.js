@@ -55,8 +55,11 @@ function App() {
       latitude: lat,
       longitude: long,
     });
-    // close new pin forms
+    // close other forms
     setNewPlace(null);
+    setShowSignin(false);
+    setShowRegister(false);
+    setShowHowto(false);
   };
 
   const handleAddClick = (e) => {
@@ -65,8 +68,11 @@ function App() {
       lat: lat,
       long: long,
     });
-    // close opened pins
+    // close other forms
     setCurrentPlaceId(null);
+    setShowSignin(false);
+    setShowRegister(false);
+    setShowHowto(false);
   };
 
   const handleSubmit = async (e) => {
@@ -211,18 +217,43 @@ function App() {
           </button>
         ) : (
           <div className="buttons">
-            <button className="button howto" onClick={() => setShowHowto(true)}>
+            <button
+              className="button howto"
+              onClick={() => {
+                setShowHowto(true);
+                // close other forms
+                setShowRegister(false);
+                setShowSignin(false);
+                setCurrentPlaceId(null);
+                setNewPlace(null);
+              }}
+            >
               How to use
             </button>
             <button
               className="button register"
-              onClick={() => setShowRegister(true)}
+              onClick={() => {
+                setShowRegister(true);
+                // close other forms
+
+                setShowHowto(false);
+                setShowSignin(false);
+                setCurrentPlaceId(null);
+                setNewPlace(null);
+              }}
             >
               Register
             </button>
             <button
               className="button signin"
-              onClick={() => setShowSignin(true)}
+              onClick={() => {
+                setShowSignin(true);
+                // close other forms
+                setShowRegister(false);
+                setShowHowto(false);
+                setCurrentPlaceId(null);
+                setNewPlace(null);
+              }}
             >
               Sign in
             </button>
