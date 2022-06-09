@@ -1,6 +1,6 @@
 .howtoContainer{
-  width: 525px;
-  height: 700px;
+  width: 33%;
+  height: fit-content;
   padding: 20px;
   border-radius: 10px;
   z-index: 3;
