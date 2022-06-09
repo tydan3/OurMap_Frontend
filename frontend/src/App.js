@@ -207,7 +207,7 @@ function App() {
                   <option value="2">2 (Bad)</option>
                   <option value="1">1 (Awful)</option>
                 </select>
-                <button className="addpin">Add Pin</button>
+                <button className="createpin">Create Pin</button>
               </form>
             </div>
           </Popup>

@@ -61,7 +61,7 @@ input::placeholder, textarea::placeholder{
   color: rgb(167, 161, 161);
 }
 
-.addpin{
+.createpin{
   border: none;
   padding: 5px;
   border-radius: 5px;
@@ -69,7 +69,7 @@ input::placeholder, textarea::placeholder{
   background-color: red;
   cursor: pointer;
 }
-.addpin:hover{
+.createpin:hover{
   transform: scale(1.05);
 }
 
