@@ -36,7 +36,7 @@ export default function Howto({ setShowHowto }) {
           cannot delete your pins, so be sure of the pins you create!
           <br /> <br />
           <span className="sub">
-            For assistance, please feel open to contacting me: text +1 (253)
+            For any assistance, please feel open to contacting me: text +1 (253)
             391-0447 or email tydan.wk@gmail.com.
           </span>
         </p>
