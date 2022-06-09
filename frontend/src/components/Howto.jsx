@@ -24,7 +24,7 @@ export default function Howto({ setShowHowto }) {
           <span>Register an Account -</span> Select the "Register" button in the
           top right to register an account. You will be asked to enter a
           username, email, and password. Remember your username and password; it
-          will be used for signing in. Your email will be used for a future
+          will be used for signing in. Your email will only be used for a future
           password recovery feature. <br />
           <br />
           <span>Sign in -</span> Select the "Sign in" button in the top right to
