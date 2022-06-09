@@ -139,6 +139,7 @@ function App() {
               offsetTop={-viewport.zoom * 3}
             >
               <Room
+                className="room"
                 style={{
                   fontSize: viewport.zoom * 6,
                   color: p.username === currentUser ? "red" : "orange",

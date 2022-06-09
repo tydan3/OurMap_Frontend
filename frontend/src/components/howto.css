@@ -47,3 +47,7 @@
   cursor: pointer;
   color: red;
 }
+
+.howtoCancel:hover{
+  transform: scale(1.1);
+}

@@ -32,6 +32,9 @@
   cursor: pointer;
   background-color: red;
 }
+.registerButton:hover{
+  transform: scale(1.05);
+}
 
 .success {
   color: green;
@@ -51,4 +54,8 @@
   right: 5px;
   cursor: pointer;
   color: red;
+}
+
+.registerCancel:hover{
+  transform: scale(1.1);
 }

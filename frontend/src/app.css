@@ -34,6 +34,10 @@ label{
   z-index: 1;
 }
 
+.marker .room:hover {
+  transform: scale(1.2);
+}
+
 .popup {
   z-index: 2;
 }
@@ -65,6 +69,9 @@ input::placeholder, textarea::placeholder{
   background-color: red;
   cursor: pointer;
 }
+.addpin:hover{
+  transform: scale(1.05);
+}
 
 .button{
   border: none;
@@ -76,10 +83,13 @@ input::placeholder, textarea::placeholder{
   cursor: pointer;
 }
 
+.button:hover{
+  transform: scale(1.1);
+}
+
 .buttons,.signout{
   z-index: 3;
   position: absolute;
   top: 10px;
   right: 10px;
 }
-

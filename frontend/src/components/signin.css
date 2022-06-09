@@ -32,6 +32,9 @@
   cursor: pointer;
   background-color: red;
 }
+.signinButton:hover{
+  transform: scale(1.05);
+}
 
 .error {
   color: red;
@@ -45,4 +48,8 @@
   right: 5px;
   cursor: pointer;
   color: red;
+}
+
+.signinCancel:hover{
+  transform: scale(1.1);
 }
