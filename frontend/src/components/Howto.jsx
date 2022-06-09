@@ -9,16 +9,24 @@ export default function Howto({ setShowHowto }) {
         OurMaps
       </div>
       <div className="textContainer">
-        <h3>Welcome and thank you for checking out my app!</h3>
+        <h4>Welcome and thank you for checking out my app!</h4>
         <h4>Here are some things you can do:</h4>
+        <br />
         <p>
+          <span>Move the map -</span> On desktop, move the map by holding
+          left-click and dragging the mouse, tilt the map by holding right-click
+          and dragging the mouse, and zoom in/out with the scroll wheel. <br />
+          On mobile devices, move the map by dragging, and zoom in/out by
+          spreading/pinching the screen.
+          <br />
+          <br />
           <span>View pins -</span> Select any pin on the map to view its info.
           Red pins are pins created by your user account; orange pins are pins
           created by other users. <br />
           <br />
           <span>Create pins -</span> Double-click (or double-press for mobile)
-          anywhere on the map to start creating a pin for that location. Pins
-          created w/o being signed in will be anonymous and have no associated
+          anywhere on the map to start creating a pin for that location. When
+          not signed in, pins created will be anonymous and have no associated
           username. <br />
           <br />
           <span>Register an Account -</span> Select the "Register" button in the
