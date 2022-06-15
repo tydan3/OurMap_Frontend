@@ -1,10 +1,11 @@
 .howtoContainer{
-  width: 75%;
-  height: 80%;
+  width: 33%;
+  height: fit-content;
   padding: 20px;
   border-radius: 10px;
   z-index: 3;
   background-color: white;
+  color: #660033;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -17,19 +18,6 @@
   justify-content: flex-start;
 }
 
-.howtoContainer h4 {
-  width: 100%;
-}
-
-.textContainer {
-  margin-top: 10px;
-  border-radius: 5px;
-  padding: 5px;
-  border: 1px solid #660033;
-  overflow-y: scroll;
-
-}
-
 .logo{
   color: red;
   display: flex;
@@ -37,12 +25,19 @@
   font-weight: 700;
 }
 
-.howtoContainer{
-  color: #660033;
+.howtoContainer h4 {
+  width: 100%;
+}
+
+.textContainer{
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #660033;
 }
 
 .textContainer p {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .textContainer p span {
@@ -50,7 +45,7 @@
 }
 
 .textContainer .sub {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .howtoCancel{
@@ -63,4 +58,20 @@
 
 .howtoCancel:hover{
   transform: scale(1.1);
+}
+
+@media only screen and (max-width: 600px) {
+  .howtoContainer {
+    width: 75%;
+    height: 80%;
+  }
+  .textContainer {
+    overflow-y: scroll;
+  }
+  .textContainer p {
+    font-size: 12px;
+  }
+  .textContainer .sub {
+    font-size: 10px;
+  }
 }
