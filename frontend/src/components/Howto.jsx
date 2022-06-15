@@ -8,10 +8,12 @@ export default function Howto({ setShowHowto }) {
         <Room />
         OurMaps
       </div>
+      <h4>
+        Welcome and thank you for checking out my app! <br />
+        Here are some things you can do:
+      </h4>
+
       <div className="textContainer">
-        <h4>Welcome and thank you for checking out my app!</h4>
-        <h4>Here are some things you can do:</h4>
-        <br />
         <p>
           <span>Move the map -</span> On desktop, move the map by holding
           left-click and dragging the mouse, tilt the map by holding right-click

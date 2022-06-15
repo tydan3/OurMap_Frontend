@@ -155,7 +155,7 @@ function App() {
                 latitude={p.lat}
                 closeButton={true}
                 closeOnClick={false}
-                anchor="left"
+                anchor="bottom"
                 onClose={() => setCurrentPlaceId(null)}
               >
                 <div className="card">
@@ -184,7 +184,7 @@ function App() {
             latitude={newPlace.lat}
             closeButton={true}
             closeOnClick={false}
-            anchor="left"
+            anchor="bottom"
             onClose={() => setNewPlace(null)}
           >
             <div>
@@ -234,7 +234,7 @@ function App() {
             <button
               className="button register"
               onClick={() => {
-                setShowRegister(true);
+                setShowRegister(!showRegister);
                 // close other forms
 
                 setShowHowto(false);

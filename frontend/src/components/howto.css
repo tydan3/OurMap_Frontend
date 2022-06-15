@@ -1,6 +1,6 @@
 .howtoContainer{
-  width: 33%;
-  height: fit-content;
+  width: 75%;
+  height: 80%;
   padding: 20px;
   border-radius: 10px;
   z-index: 3;
@@ -17,6 +17,19 @@
   justify-content: flex-start;
 }
 
+.howtoContainer h4 {
+  width: 100%;
+}
+
+.textContainer {
+  margin-top: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  border: 1px solid #660033;
+  overflow-y: scroll;
+
+}
+
 .logo{
   color: red;
   display: flex;
@@ -24,12 +37,12 @@
   font-weight: 700;
 }
 
-.textContainer{
+.howtoContainer{
   color: #660033;
 }
 
 .textContainer p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .textContainer p span {
@@ -37,7 +50,7 @@
 }
 
 .textContainer .sub {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .howtoCancel{
