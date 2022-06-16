@@ -8,10 +8,11 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = "https://ourmapserver.click";
+  const myUrl = "http://localhost:8800"; // http://localhost:8800 : https://ourmapserver.click
   const myStorage = window.localStorage;
   const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins, setPins] = useState([]);
+  const [pinId, setPinId] = useState(null);
   const [currentPlaceId, setCurrentPlaceId] = useState(null);
   const [newPlace, setNewPlace] = useState(null);
   const [title, setTitle] = useState(null);
@@ -60,6 +61,8 @@ function App() {
     setShowSignin(false);
     setShowRegister(false);
     setShowHowto(false);
+    // set id for possible pin deletion
+    setPinId(id);
   };
 
   const handleAddClick = (e) => {
@@ -75,7 +78,7 @@ function App() {
     setShowHowto(false);
   };
 
-  const handleSubmit = async (e) => {
+  const handleCreatePin = async (e) => {
     e.preventDefault();
     const newPin = {
       username: currentUser,
@@ -109,13 +112,50 @@ function App() {
         setNewPlace(null);
       })
       .catch((error) => {
-        console.error("Error submitting pin!", error);
+        console.error("Error creating pin!", error);
       });
   };
 
   const handleSignout = () => {
     myStorage.removeItem("user");
     setCurrentUser(null);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    const pinToDelete = {
+      _id: pinId,
+    };
+
+    const requestOptions = {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pinToDelete),
+    };
+
+    fetch(myUrl + "/api/pins", requestOptions)
+      .then(async (response) => {
+        const isJson = response.headers
+          .get("content-type")
+          ?.includes("application/json");
+        const data = isJson && (await response.json());
+        // check for error response
+        if (!response.ok) {
+          // get error message from body or default to response status
+          const error = (data && data.message) || response.status;
+          return Promise.reject(error);
+        }
+        // remove pin from pins array and update map
+        const pinIndex = pins.indexOf(pins.find((e) => e._id === data._id));
+        console.log(pinIndex);
+        pins.splice(pinIndex, 1);
+        setPins(pins);
+        // close displayed pin's window
+        setCurrentPlaceId(null);
+      })
+      .catch((error) => {
+        console.error("Error deleting pin!", error);
+      });
   };
 
   return (
@@ -145,7 +185,9 @@ function App() {
                   color: p.username === currentUser ? "red" : "orange",
                   cursor: "pointer",
                 }}
-                onClick={() => handleMarkerClick(p._id, p.lat, p.long)}
+                onClick={() => {
+                  handleMarkerClick(p._id, p.lat, p.long);
+                }}
               />
             </Marker>
             {p._id === currentPlaceId && (
@@ -172,6 +214,9 @@ function App() {
                     Created by <b>{p.username}</b>{" "}
                   </span>
                   <span className="date">{format(p.createdAt)}</span>
+                  <button className="deleteButton" onClick={handleDelete}>
+                    Delete Pin
+                  </button>
                 </div>
               </Popup>
             )}
@@ -188,7 +233,7 @@ function App() {
             onClose={() => setNewPlace(null)}
           >
             <div>
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleCreatePin}>
                 <label>Title</label>
                 <input
                   placeholder="Enter a title for your pin"
