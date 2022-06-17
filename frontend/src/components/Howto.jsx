@@ -32,9 +32,9 @@ export default function Howto({ setShowHowto }) {
           <br />
           <br />
           <span>Register an Account -</span> Select the "Register" button in the
-          top right to register an account. Remember your username and password;
-          it will be used for signing in. Your email will only be used for a
-          future password recovery feature. <br />
+          top right to register an account. Your username and password will be
+          case-sensitive and used for signing in. Your email will only be used
+          for a future password recovery feature. <br />
           <br />
           <span>Sign in -</span> Select the "Sign in" button in the top right to
           sign in to a registered account. When signed in, pins you create will
