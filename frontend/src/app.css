@@ -113,3 +113,23 @@ input::placeholder, textarea::placeholder{
   top: 10px;
   right: 10px;
 }
+
+@media only screen and (max-width: 600px) {
+
+  .buttons,.signout{
+    z-index: 3;
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    right: 98px;
+  }  
+
+  .howto {
+    z-index: 3;
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
