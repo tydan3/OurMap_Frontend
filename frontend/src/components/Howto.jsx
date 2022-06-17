@@ -26,9 +26,10 @@ export default function Howto({ setShowHowto }) {
           pins are pins created by your user account; orange pins are pins
           created by other users. <br />
           <br />
-          <span>Create a pin -</span> Double-click (or double-press for mobile)
-          the map to create a pin for that location. When not signed in, pins
-          created will be anonymous and have no associated username. <br />
+          <span>Create a pin -</span> Double-click (or double-press on mobile
+          devices) the map to create a pin for that location. When not signed
+          in, pins created will be anonymous and have no associated username.{" "}
+          <br />
           <br />
           <span>Register an Account -</span> Select the "Register" button in the
           top right to register an account. Remember your username and password;
@@ -39,8 +40,13 @@ export default function Howto({ setShowHowto }) {
           sign in to a registered account. When signed in, pins you create will
           be associated to your username and be colored red.
           <br /> <br />
-          <span>Delete your pin -</span> Feature to be added. Currently, you
-          cannot delete your pins, so be certain of the pins you create!
+          For demonstration purposes, you may use this account:
+          <br />
+          username: demo, password: demo123.
+          <br /> <br />
+          <span>Delete your pin -</span> You may only delete pins that belong to
+          your account. To delete a pin, select your pin (they are the red ones)
+          and click/press the delete button in the pin's info window.
           <br /> <br />
           <span className="sub">
             For any assistance, please feel open to contacting me: text +1 (253)
