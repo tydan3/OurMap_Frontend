@@ -1,5 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
+import Geocoder from "react-map-gl-geocoder";
+import "react-map-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import { Room, Star } from "@material-ui/icons";
 import "./app.css";
 import { format } from "timeago.js";
@@ -10,6 +12,8 @@ import Howto from "./components/Howto";
 function App() {
   const myUrl = "https://ourmapserver.click"; // http://localhost:8800 : https://ourmapserver.click
   const myStorage = window.localStorage;
+  const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX;
+
   const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins, setPins] = useState([]);
   const [pinId, setPinId] = useState(null);
@@ -28,6 +32,24 @@ function App() {
     longitude: -122.4379,
     zoom: 12,
   });
+
+  // For geocoder search bar
+  const mapRef = useRef();
+  const handleViewportChange = useCallback(
+    (newViewport) => setViewport(newViewport),
+    []
+  );
+  const handleGeocoderViewportChange = useCallback(
+    (newViewport) => {
+      const geocoderDefaultOverrides = { transitionDuration: 1000 };
+
+      return handleViewportChange({
+        ...newViewport,
+        ...geocoderDefaultOverrides,
+      });
+    },
+    [handleViewportChange]
+  );
 
   // handle pin data from database
   useEffect(() => {
@@ -178,7 +200,8 @@ function App() {
     <div className="App">
       <ReactMapGL
         {...viewport}
-        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
+        ref={mapRef}
+        mapboxApiAccessToken={MAPBOX_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
         onDblClick={handleAddClick}
@@ -348,6 +371,13 @@ function App() {
             setCurrentUser={setCurrentUser}
           />
         )}
+        <Geocoder
+          className="geocoder"
+          mapRef={mapRef}
+          onViewportChange={handleGeocoderViewportChange}
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+          position="top-left"
+        />
       </ReactMapGL>
     </div>
   );
