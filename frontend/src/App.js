@@ -29,7 +29,9 @@ function App() {
     zoom: 12,
   });
 
+  // handle pin data from database
   useEffect(() => {
+    // fetch pin
     fetch(myUrl + "/api/pins")
       .then(async (response) => {
         const isJson = response.headers
@@ -44,11 +46,13 @@ function App() {
           return Promise.reject(error);
         }
 
+        // set "pins" array with fetched data
         setPins(data);
       })
       .catch((error) => console.error("Error retrieving pins!", error));
   }, []);
 
+  // handle marker click
   const handleMarkerClick = (id, lat, long) => {
     setCurrentPlaceId(id);
     setViewport({
@@ -56,15 +60,18 @@ function App() {
       latitude: lat,
       longitude: long,
     });
+
     // close other forms
     setNewPlace(null);
     setShowSignin(false);
     setShowRegister(false);
     setShowHowto(false);
+
     // set id for possible pin deletion
     setPinId(id);
   };
 
+  // handle opening form for adding new marker
   const handleAddClick = (e) => {
     const [long, lat] = e.lngLat;
     setNewPlace({
@@ -78,6 +85,7 @@ function App() {
     setShowHowto(false);
   };
 
+  // handle submitting creation of new marker
   const handleCreatePin = async (e) => {
     e.preventDefault();
     const newPin = {
@@ -94,6 +102,7 @@ function App() {
       body: JSON.stringify(newPin),
     };
 
+    // post request for adding new pin to database
     fetch(myUrl + "/api/pins", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
@@ -116,17 +125,20 @@ function App() {
       });
   };
 
+  // handle user signing out
   const handleSignout = () => {
     myStorage.removeItem("user");
     setCurrentUser(null);
   };
 
+  // handle pin deletion
   const handleDelete = async (e) => {
     e.preventDefault();
     const pinToDelete = {
       _id: pinId,
     };
 
+    // delete request for removing pin from database
     const requestOptions = {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
@@ -139,17 +151,21 @@ function App() {
           .get("content-type")
           ?.includes("application/json");
         const data = isJson && (await response.json());
+
         // check for error response
         if (!response.ok) {
           // get error message from body or default to response status
           const error = (data && data.message) || response.status;
           return Promise.reject(error);
         }
-        // remove pin from pins array and update map
+
+        // find index of pin in pins array using id
         const pinIndex = pins.indexOf(pins.find((e) => e._id === data._id));
-        console.log(pinIndex);
+
+        // remove pin from pins array and update map
         pins.splice(pinIndex, 1);
         setPins(pins);
+
         // close displayed pin's window
         setCurrentPlaceId(null);
       })
@@ -169,8 +185,10 @@ function App() {
         doubleClickZoom={false}
         // transitionDuration="20"
       >
+        {/* Place pins from database onto the map */}
         {pins.map((p) => (
           <>
+            {/* Marker from MapBox */}
             <Marker
               className="marker"
               longitude={p.long}
@@ -178,6 +196,7 @@ function App() {
               offsetLeft={-viewport.zoom * 3}
               offsetTop={-viewport.zoom * 3}
             >
+              {/* Room icon for Marker */}
               <Room
                 className="room"
                 style={{
@@ -185,11 +204,14 @@ function App() {
                   color: p.username === currentUser ? "red" : "orange",
                   cursor: "pointer",
                 }}
+                // Handle state when pin marker is clicked
                 onClick={() => {
                   handleMarkerClick(p._id, p.lat, p.long);
                 }}
               />
             </Marker>
+
+            {/* For viewing placed pins */}
             {p._id === currentPlaceId && (
               <Popup
                 className="popup"
@@ -200,6 +222,7 @@ function App() {
                 anchor="bottom"
                 onClose={() => setCurrentPlaceId(null)}
               >
+                {/* Display pin's info */}
                 <div className="card">
                   <label>Title</label>
                   <h4 className="place">{p.title}</h4>
@@ -209,19 +232,27 @@ function App() {
                   <div className="stars">
                     {Array(p.rating).fill(<Star className="star" />)}
                   </div>
+
+                  {/* Display pin's user info*/}
                   <label>User</label>
                   <span className="username">
                     Created by <b>{p.username}</b>{" "}
                   </span>
                   <span className="date">{format(p.createdAt)}</span>
-                  <button className="deleteButton" onClick={handleDelete}>
-                    Delete Pin
-                  </button>
+
+                  {/* Display delete option if pin belongs to current user */}
+                  {currentUser === p.username && (
+                    <button className="deleteButton" onClick={handleDelete}>
+                      Delete Pin
+                    </button>
+                  )}
                 </div>
               </Popup>
             )}
           </>
         ))}
+
+        {/* For adding a new pin */}
         {newPlace && (
           <Popup
             className="popup"
@@ -257,6 +288,8 @@ function App() {
             </div>
           </Popup>
         )}
+
+        {/* buttons */}
         <button
           className="button howto"
           onClick={() => {
