@@ -73,6 +73,19 @@ input::placeholder, textarea::placeholder{
   transform: scale(1.05);
 }
 
+.deleteButton{
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  background-color: red;
+  cursor: pointer;
+}
+
+.deleteButton:hover{
+  transform: scale(1.05);
+}
+
 .button{
   border: none;
   padding: 5px;
