@@ -8,7 +8,7 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = "http://localhost:8800"; // http://localhost:8800 : https://ourmapserver.click
+  const myUrl = "https://ourmapserver.click"; // http://localhost:8800 : https://ourmapserver.click
   const myStorage = window.localStorage;
   const [currentUser, setCurrentUser] = useState(myStorage.getItem("user"));
   const [pins, setPins] = useState([]);
@@ -257,25 +257,25 @@ function App() {
             </div>
           </Popup>
         )}
+        <button
+          className="button howto"
+          onClick={() => {
+            setShowHowto(true);
+            // close other forms
+            setShowRegister(false);
+            setShowSignin(false);
+            setCurrentPlaceId(null);
+            setNewPlace(null);
+          }}
+        >
+          How to use
+        </button>
         {currentUser ? (
           <button className="button signout" onClick={handleSignout}>
             Sign out
           </button>
         ) : (
           <div className="buttons">
-            <button
-              className="button howto"
-              onClick={() => {
-                setShowHowto(true);
-                // close other forms
-                setShowRegister(false);
-                setShowSignin(false);
-                setCurrentPlaceId(null);
-                setNewPlace(null);
-              }}
-            >
-              How to use
-            </button>
             <button
               className="button register"
               onClick={() => {
