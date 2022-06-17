@@ -17,7 +17,7 @@ function App() {
   const [newPlace, setNewPlace] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(5);
   const [showRegister, setShowRegister] = useState(false);
   const [showSignin, setShowSignin] = useState(false);
   const [showHowto, setShowHowto] = useState(false);
