@@ -282,6 +282,7 @@ function App() {
                   <option value="3">3 (Okay)</option>
                   <option value="2">2 (Bad)</option>
                   <option value="1">1 (Awful)</option>
+                  <option value="0">No Rating</option>
                 </select>
                 <button className="createpin">Create Pin</button>
               </form>
