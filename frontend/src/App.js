@@ -206,6 +206,8 @@ function App() {
         mapStyle="mapbox://styles/tydan/ckx7o6iwg00uj15lwubinqgib"
         onDblClick={handleAddClick}
         doubleClickZoom={false}
+        mapOptions={{}}
+
         // transitionDuration="20"
       >
         {/* Place pins from database onto the map */}
@@ -224,7 +226,7 @@ function App() {
                 className="room"
                 style={{
                   fontSize: viewport.zoom * 6,
-                  color: p.username === currentUser ? "red" : "orange",
+                  color: p.username === currentUser ? "red" : "magenta",
                   cursor: "pointer",
                 }}
                 // Handle state when pin marker is clicked
@@ -312,6 +314,12 @@ function App() {
             </div>
           </Popup>
         )}
+
+        <div className="topbar">
+          <div>
+            <img src="./logo.png" alt="logo icon" />
+          </div>
+        </div>
 
         {/* buttons */}
         <button
