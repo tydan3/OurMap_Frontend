@@ -61,10 +61,10 @@
   transform: scale(1.1);
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   .howtoContainer {
     width: 75%;
-    height: 80%;
+    height: 70%;
   }
   .textContainer {
     overflow-y: scroll;
