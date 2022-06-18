@@ -19,7 +19,7 @@
 }
 
 .logo{
-  color: red;
+  color: rgb(255, 50, 50);
   display: flex;
   align-items: center;
   font-weight: 700;
@@ -31,7 +31,7 @@
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  background-color: red;
+  background-color: rgb(255, 50, 50);
 }
 .registerButton:hover{
   transform: scale(1.05);
@@ -44,7 +44,7 @@
 }
 
 .error {
-  color: red;
+  color: rgb(255, 50, 50);
   font-size: 12px;
   text-align: center;
 }
@@ -54,7 +54,7 @@
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: red;
+  color: rgb(255, 50, 50);
 }
 
 .registerCancel:hover{

@@ -12,9 +12,9 @@
 
 label{
   width: max-content;
-  color: red;
+  color: rgb(255, 50, 50);
   font-size: 15px;
-  border-bottom: .5px solid red;
+  border-bottom: .5px solid rgb(255, 50, 50);
   margin: 3px 0;
 }
 
@@ -68,7 +68,7 @@ input::placeholder, textarea::placeholder{
   padding: 5px;
   border-radius: 5px;
   color: white;
-  background-color: red;
+  background-color: rgb(255, 50, 50);
   cursor: pointer;
 }
 .createpin:hover{
@@ -80,7 +80,7 @@ input::placeholder, textarea::placeholder{
   padding: 5px;
   border-radius: 5px;
   color: white;
-  background-color: red;
+  background-color: rgb(255, 50, 50);
   cursor: pointer;
 }
 
@@ -93,7 +93,7 @@ input::placeholder, textarea::placeholder{
   margin: 2.5px;
   border-radius: 10px;
   color: white;
-  background-color: red;
+  background-color: rgb(255, 50, 50);
   border: 0.5px solid rgb(255, 255, 255);
   cursor: pointer;
     transition: all 0.25s ease;
@@ -124,7 +124,7 @@ input::placeholder, textarea::placeholder{
   z-index: 1;
   position: fixed;
   top: 0;
-  background-color: red;
+  background-color: rgb(255, 50, 50);
   box-shadow: 3px 3px 20px rgba(51, 50, 50, 0.5);
 }
 
@@ -175,7 +175,7 @@ input::placeholder, textarea::placeholder{
     z-index: 3;
     position: absolute;
     bottom: 0px;
-    background-color: red;
+    background-color: rgb(255, 50, 50);
     box-shadow: 3px 3px 20px rgba(51, 50, 50, 0.5);
   } */
 

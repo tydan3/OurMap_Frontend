@@ -226,7 +226,7 @@ function App() {
                 className="room"
                 style={{
                   fontSize: viewport.zoom * 6,
-                  color: p.username === currentUser ? "red" : "magenta",
+                  color: p.username === currentUser ? "red" : "#0060ff",
                   cursor: "pointer",
                 }}
                 // Handle state when pin marker is clicked
