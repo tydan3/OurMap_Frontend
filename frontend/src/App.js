@@ -315,12 +315,7 @@ function App() {
           </Popup>
         )}
 
-        <div className="topbar">
-          <div>
-            <img src="./logo.png" alt="logo icon" />
-          </div>
-        </div>
-
+        <div className="topbar" />
         {/* buttons */}
         <button
           className="button howto"
@@ -387,6 +382,12 @@ function App() {
           position="top-left"
         />
       </ReactMapGL>
+
+      {/* logo icon */}
+      <div className="imgContainer">
+        <img src="./logo.png" alt="logo icon" />
+      </div>
+      <div className="bottomBar" />
     </div>
   );
 }
