@@ -23,8 +23,8 @@ export default function Howto({ setShowHowto }) {
           <br />
           <br />
           <span>View pins -</span> Select a pin on the map to view its info. Red
-          pins are pins created by your user account; purple pins are pins
-          created by other users. <br />
+          pins are pins created by your user account; blue pins are pins created
+          by other users. <br />
           <br />
           <span>Create a pin -</span> Double-click (or double-press on mobile
           devices) the map to create a pin for that location. When not signed
