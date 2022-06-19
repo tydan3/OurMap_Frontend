@@ -19,7 +19,7 @@
 }
 
 .logo{
-  color: rgb(255, 50, 50);
+  color: rgb(255, 75, 75);
   display: flex;
   align-items: center;
   font-weight: 700;
@@ -31,14 +31,14 @@
   border-radius: 5px;
   color: white;
   cursor: pointer;
-  background-color: rgb(255, 50, 50);
+  background-color: rgb(255, 75, 75);
 }
 .signinButton:hover{
   transform: scale(1.05);
 }
 
 .error {
-  color: rgb(255, 50, 50);
+  color: rgb(255, 75, 75);
   font-size: 12px;
   text-align: center;
 }
@@ -48,7 +48,7 @@
   top: 5px;
   right: 5px;
   cursor: pointer;
-  color: rgb(255, 50, 50);
+  color: rgb(255, 75, 75);
 }
 
 .signinCancel:hover{

@@ -228,7 +228,7 @@ function App() {
                   fontSize: viewport.zoom * 6,
                   color:
                     p.username === currentUser
-                      ? "rgb(255, 50, 50)"
+                      ? "rgb(255, 75, 75)"
                       : "dodgerblue",
                   cursor: "pointer",
                 }}
