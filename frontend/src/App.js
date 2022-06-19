@@ -24,13 +24,13 @@ function App() {
   const [rating, setRating] = useState(5);
   const [showRegister, setShowRegister] = useState(false);
   const [showSignin, setShowSignin] = useState(false);
-  const [showHowto, setShowHowto] = useState(false);
+  const [showHowto, setShowHowto] = useState(true);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
-    latitude: 47.2445,
-    longitude: -122.4379,
-    zoom: 12,
+    latitude: 40,
+    longitude: -101,
+    zoom: 4,
   });
 
   // For geocoder search bar
