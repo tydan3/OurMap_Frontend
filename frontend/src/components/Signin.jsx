@@ -53,8 +53,8 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
         OurMaps
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username" ref={userRef} />
-        <input type="password" placeholder="password" ref={passwordRef} />
+        <input type="text" placeholder="Username" ref={userRef} />
+        <input type="password" placeholder="Password" ref={passwordRef} />
         <button className="signinButton">Sign in</button>
         {error && <span className="error">Wrong username or password.</span>}
       </form>

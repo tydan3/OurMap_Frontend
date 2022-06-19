@@ -52,9 +52,17 @@ export default function Register({ setShowRegister }) {
         OurMaps
       </div>
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="username" ref={userRef} />
-        <input type="email" placeholder="email" ref={emailRef} />
-        <input type="password" placeholder="password" ref={passwordRef} />
+        <input
+          type="email"
+          placeholder="Enter an email (optional)"
+          ref={emailRef}
+        />
+        <input type="text" placeholder="Enter a username" ref={userRef} />
+        <input
+          type="password"
+          placeholder="Enter a password"
+          ref={passwordRef}
+        />
         <button className="registerButton">Register</button>
         {success && (
           <span className="success">Success! You can now sign in.</span>
