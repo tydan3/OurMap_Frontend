@@ -281,7 +281,7 @@ function App() {
         ))}
 
         {/* For adding a new pin */}
-        {newPlace && (
+        {newPlace && currentUser && (
           <Popup
             className="popup"
             longitude={newPlace.long}
