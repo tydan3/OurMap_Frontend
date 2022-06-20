@@ -93,8 +93,8 @@ input::placeholder, textarea::placeholder{
   margin: 2.5px;
   border-radius: 10px;
   color: white;
-  background-color: rgb(255, 75, 75);
-  border: none;
+  background-color: royalblue;
+  border: 0.25px outset white;
   cursor: pointer;
     transition: all 0.25s ease;
 
@@ -113,6 +113,7 @@ input::placeholder, textarea::placeholder{
 
 .howto {
   z-index: 3;
+  background-color: rgb(255, 75, 75);
   position: fixed;
   top: 10px;
   right: 10px;
@@ -141,12 +142,18 @@ input::placeholder, textarea::placeholder{
   justify-content: center;
 }
 
+.imgContainer h1 {
+  color: white;
+}
+
 .imgContainer img{
-  width: 50px;
-  height: 50px;
+  padding-right: 5px;
+  width: 40px;
+  height: 40px;
 }
 
 
+/* For mobile devices */
 @media only screen and (max-width: 600px) {
 
   .topbar {
@@ -167,6 +174,10 @@ input::placeholder, textarea::placeholder{
     left: 5px;
     bottom: 5px;
     justify-content: flex-start;
+  }
+
+  .imgContainer h1 {
+    display: none;  
   }
 
   /* .bottomBar{

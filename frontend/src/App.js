@@ -10,7 +10,7 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = "https://ourmapserver.click"; // http://localhost:8800 : https://ourmapserver.click
+  const myUrl = "http://localhost:8800"; // http://localhost:8800 : https://ourmapserver.click
   const myStorage = window.localStorage;
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX;
 
@@ -340,6 +340,19 @@ function App() {
         ) : (
           <div className="buttons">
             <button
+              className="button signin"
+              onClick={() => {
+                setShowSignin(true);
+                // close other forms
+                setShowRegister(false);
+                setShowHowto(false);
+                setCurrentPlaceId(null);
+                setNewPlace(null);
+              }}
+            >
+              Sign in
+            </button>
+            <button
               className="button register"
               onClick={() => {
                 setShowRegister(!showRegister);
@@ -352,19 +365,6 @@ function App() {
               }}
             >
               Register
-            </button>
-            <button
-              className="button signin"
-              onClick={() => {
-                setShowSignin(true);
-                // close other forms
-                setShowRegister(false);
-                setShowHowto(false);
-                setCurrentPlaceId(null);
-                setNewPlace(null);
-              }}
-            >
-              Sign in
             </button>
           </div>
         )}
@@ -389,6 +389,7 @@ function App() {
       {/* logo icon */}
       <div className="imgContainer">
         <img src="./logo.png" alt="logo icon" />
+        <h1>OurMaps</h1>
       </div>
       <div className="bottomBar" />
     </div>

@@ -10,54 +10,59 @@ export default function Howto({ setShowHowto }) {
       </div>
       <h4>
         Welcome and thank you for checking out my app! <br />
-        Here are some things you can do:
       </h4>
 
       <div className="textContainer">
         <p>
-          <span>Move the map -</span> On desktop, move the map by holding
-          left-click and dragging the mouse, tilt the map by holding right-click
-          and dragging the mouse, or zoom in/out with the scroll wheel. <br />
-          On mobile devices, move the map by dragging the screen, or zoom in/out
-          by spreading/pinching the screen.
-          <br />
-          <br />
-          <span>View pins -</span> Select a pin on the map to view its info. Red
-          pins are pins created by your user account; blue pins are pins created
-          by other users. <br />
-          <br />
-          <span>Create a pin -</span> Double-click (or double-press on mobile
-          devices) the map to create a pin for that location. When not signed
-          in, pins created will be anonymous and have no associated username.{" "}
-          <br />
-          <br />
-          <span>Register an Account -</span> Select the "Register" button in the
-          top right to register an account. Your username and password will be
-          case-sensitive and used for signing in. Your email will only be used
-          for a future password recovery feature. <br />
-          <br />
-          <span>Sign in -</span> Select the "Sign in" button in the top right to
-          sign in to a registered account. When signed in, pins you create will
-          be associated to your username and be colored red.
+          <span>What is this?</span> - This is a shared map where users can
+          share their thoughts about a place in the form of a 'pin'.
           <br /> <br />
-          For demonstration purposes, you may use this account:
+          <span> Here are some things you can do:</span>
           <br />
-          username: demo, password: demo123.
+          <span>Move the map -</span> Move the map by dragging with mouse or
+          finger. Zoom in/out with scroll wheel or by pinching/spreading. Tilt
+          map by holding right-click and dragging.
+          <br />
+          <br />
+          <span>View pins -</span> View a pin by clicking or tapping on it to
+          bring up its info. <br />
+          <br />
+          <span>Create a pin -</span> Double-click or double-tap a spot to
+          create a pin. You must be signed-in to create a pin.
+          <br />
+          <br />
+          <span>Sign in -</span> Select the "Sign in" button in to sign in to a
+          registered account. When signed in, pins you create will be associated
+          to your username and be colored red. Contact me if you forget your
+          information and I can reset it.
           <br /> <br />
-          <span>Delete your pin -</span> You may only delete pins that belong to
+          <span>
+            For demonstration purposes or for anonymity, you may use this
+            account:
+            <br />
+            username: anon
+            <br /> password: anon123
+          </span>
+          <br /> <br />
+          <span>Register -</span> Select the "Register" button to register an
+          account. Your username and password are case-sensitive and will be
+          used for signing in. Entering an email is optional; it will only be
+          used for a future password recovery feature. <br />
+          <br />
+          <span>Delete pins -</span> You may only delete pins that belong to
           your account. To delete a pin, select your pin (they are the red ones)
           and click/press the delete button in the pin's info window.
           <br /> <br />
-          <span>Search a location -</span> Enter a term into the search bar to
-          search for a location (e.g., cities, street addresses, restaurants,
+          <span>Search for a location -</span> Enter a term into the search bar
+          to search for a location (e.g., cities, street addresses, restaurants,
           etc.).
           <br /> <br />
-          <span className="sub">
-            For any assistance, please feel open to contacting me: text +1 (253)
-            391-0447 or email tydan.wk@gmail.com.
-          </span>
         </p>
       </div>
+      <span className="sub">
+        For help or suggestions, here is my contact: +1 (253) 391-0447 or
+        tydan.wk@gmail.com.
+      </span>
       <Cancel className="howtoCancel" onClick={() => setShowHowto(false)} />
     </div>
   );
