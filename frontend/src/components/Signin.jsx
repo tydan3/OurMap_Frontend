@@ -1,5 +1,5 @@
 import "./signin.css";
-import { Room, Cancel } from "@material-ui/icons";
+import { Cancel } from "@material-ui/icons";
 import { useState, useRef } from "react";
 
 export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
@@ -48,15 +48,17 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
 
   return (
     <div className="signinContainer">
-      <div className="logo">
-        <Room />
-        OurMaps
+      <div className="signinlogo">
+        <img src="./logo.png" alt="logo icon" />
+        <h3>Sign In</h3>
       </div>
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Username" ref={userRef} />
         <input type="password" placeholder="Password" ref={passwordRef} />
         <button className="signinButton">Sign in</button>
-        {error && <span className="error">Wrong username or password.</span>}
+        {error && (
+          <span className="signinError">Wrong username or password.</span>
+        )}
       </form>
       <Cancel className="signinCancel" onClick={() => setShowSignin(false)} />
     </div>

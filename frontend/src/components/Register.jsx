@@ -1,5 +1,5 @@
 import "./register.css";
-import { Room, Cancel } from "@material-ui/icons";
+import { Cancel } from "@material-ui/icons";
 import { useState, useRef } from "react";
 
 export default function Register({ setShowRegister }) {
@@ -48,8 +48,8 @@ export default function Register({ setShowRegister }) {
   return (
     <div className="registerContainer">
       <div className="logo">
-        <Room />
-        OurMaps
+        <img src="./logo.png" alt="logo icon" />
+        <h3>Registration</h3>
       </div>
       <form onSubmit={handleSubmit}>
         <input
@@ -67,7 +67,9 @@ export default function Register({ setShowRegister }) {
         {success && (
           <span className="success">Success! You can now sign in.</span>
         )}
-        {error && <span className="error">Error! Something went wrong.</span>}
+        {error && (
+          <span className="registerError">Error! Something went wrong.</span>
+        )}
       </form>
       <Cancel
         className="registerCancel"
