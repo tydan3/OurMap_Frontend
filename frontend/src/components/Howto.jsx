@@ -17,13 +17,34 @@ export default function Howto({ setShowHowto }) {
           <span>What is this?</span> - This is a shared map where users can
           share their thoughts about a place by creating 'pins'. Pins are the
           markers you see on the map. Click/tap them to see more.
-          <br /> <br />
+          <br />
+          <br />
           <span> Here are some things you can do:</span>
+          <br />{" "}
+          --------------------------------------------------------------------------------
+          <span>Register -</span> Select the "Register" button to register an
+          account. Your username and password are case-sensitive and will be
+          used for signing in. Entering an email is optional; it will only be
+          used for a future password recovery feature.
+          <br />
+          <br />
+          <span>Sign in -</span> Select the "Sign in" button in to sign in to a
+          registered account. When signed in, pins you create will be associated
+          to your username and be colored red. Contact me if you forget your
+          information and I can reset it.
+          <br />
+          --------------------------------------------------------------------------------
           <br />
           <span>Move the map -</span> Move the map by dragging with mouse or
           finger. Zoom in/out with scroll wheel or by pinching/spreading. Tilt
           map by holding right-click and dragging.
           <br />
+          <br />
+          <span>Search for a location -</span> Enter a term into the search bar
+          to search for a location (e.g., cities, street addresses, restaurants,
+          etc.).
+          <br />
+          --------------------------------------------------------------------------------
           <br />
           <span>View pins -</span> View a pin by clicking or tapping on it to
           bring up its info. <br />
@@ -37,28 +58,16 @@ export default function Howto({ setShowHowto }) {
           <span>Delete pins -</span> You may only delete pins that belong to
           your account. To delete a pin, select your pin (they are the red ones)
           and click/press the delete button in the pin's info window.
-          <br /> <br />
+          <br />
+          --------------------------------------------------------------------------------
+          <br />
           <span>
             For demonstration or anonymity purposes, use...
             <br />
             username: anon
-            <br /> password: anon123?
+            <br />
+            password: anon123?
           </span>
-          <br /> <br />
-          <span>Sign in -</span> Select the "Sign in" button in to sign in to a
-          registered account. When signed in, pins you create will be associated
-          to your username and be colored red. Contact me if you forget your
-          information and I can reset it.
-          <br /> <br />
-          <span>Register -</span> Select the "Register" button to register an
-          account. Your username and password are case-sensitive and will be
-          used for signing in. Entering an email is optional; it will only be
-          used for a future password recovery feature. <br />
-          <br />
-          <span>Search for a location -</span> Enter a term into the search bar
-          to search for a location (e.g., cities, street addresses, restaurants,
-          etc.).
-          <br /> <br />
         </p>
       </div>
       <span className="sub">
