@@ -52,11 +52,7 @@ export default function Register({ setShowRegister }) {
         <h3>Registration</h3>
       </div>
       <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Enter an email (optional)"
-          ref={emailRef}
-        />
+        <input type="email" placeholder="Enter an email" ref={emailRef} />
         <input type="text" placeholder="Enter a username" ref={userRef} />
         <input
           type="password"
