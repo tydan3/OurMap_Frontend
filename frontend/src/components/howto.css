@@ -1,6 +1,6 @@
 .howtoContainer{
   width: 33%;
-  height: fit-content;
+  height: 75%;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 3px 3px 20px rgba(51, 50, 50, 0.5);
@@ -43,6 +43,8 @@
   padding: 5px;
   background-color: white;
   border: 1px inset white;
+  overflow-y: scroll;
+
 }
 
 .textContainer p {
@@ -76,9 +78,6 @@
   .howtoContainer {
     width: 75%;
     height: 70%;
-  }
-  .textContainer {
-    overflow-y: scroll;
   }
   .textContainer p {
     font-size: 12px;

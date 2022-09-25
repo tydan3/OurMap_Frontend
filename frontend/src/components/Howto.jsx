@@ -20,12 +20,10 @@ export default function Howto({ setShowHowto }) {
           <br />
           <br />
           <span> Here are some things you can do:</span>
-          <br />{" "}
-          --------------------------------------------------------------------------------
-          <span>Register -</span> Select the "Register" button to register an
-          account. Your username and password are case-sensitive and will be
-          used for signing in. Entering an email is optional; it will only be
-          used for a future password recovery feature.
+          <br /> <span>Register -</span> Select the "Register" button to
+          register an account. Your username and password are case-sensitive and
+          will be used for signing in. Entering an email is optional; it will
+          only be used for a future password recovery feature.
           <br />
           <br />
           <span>Sign in -</span> Select the "Sign in" button in to sign in to a
@@ -33,7 +31,6 @@ export default function Howto({ setShowHowto }) {
           to your username and be colored red. Contact me if you forget your
           information and I can reset it.
           <br />
-          --------------------------------------------------------------------------------
           <br />
           <span>Move the map -</span> Move the map by dragging with mouse or
           finger. Zoom in/out with scroll wheel or by pinching/spreading. Tilt
@@ -44,7 +41,6 @@ export default function Howto({ setShowHowto }) {
           to search for a location (e.g., cities, street addresses, restaurants,
           etc.).
           <br />
-          --------------------------------------------------------------------------------
           <br />
           <span>View pins -</span> View a pin by clicking or tapping on it to
           bring up its info. <br />
@@ -59,10 +55,10 @@ export default function Howto({ setShowHowto }) {
           your account. To delete a pin, select your pin (they are the red ones)
           and click/press the delete button in the pin's info window.
           <br />
-          --------------------------------------------------------------------------------
           <br />
           <span>
-            For demonstration or anonymity purposes, use...
+            For demonstration or anonymity purposes, sign in with the following
+            account:
             <br />
             username: anon
             <br />
