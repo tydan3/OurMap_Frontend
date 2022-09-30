@@ -8,6 +8,12 @@ export default function Register({ setShowRegister }) {
   const userRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
+  const locationRef = useRef();
+
+  const ConsoleLog = ({ children }) => {
+    console.log(children);
+    return false;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +21,7 @@ export default function Register({ setShowRegister }) {
       username: userRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
+      location: locationRef.current.value,
     };
 
     const requestOptions = {
@@ -22,7 +29,7 @@ export default function Register({ setShowRegister }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
     };
-    fetch("https://ourmapserver.click/api/users/register", requestOptions)
+    fetch("http://localhost:8800/api/users/register", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
@@ -59,6 +66,8 @@ export default function Register({ setShowRegister }) {
           placeholder="Enter a password"
           ref={passwordRef}
         />
+        <input type="location" placeholder="Enter your location" ref={locationRef} />
+        <ConsoleLog>{ locationRef }</ConsoleLog>
         <button className="registerButton">Register</button>
         {success && (
           <span className="success">Success! You can now sign in.</span>
