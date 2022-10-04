@@ -22,8 +22,7 @@ export default function Howto({ setShowHowto }) {
           <span> Here are some things you can do:</span>
           <br /> <span>Register -</span> Select the "Register" button to
           register an account. Your username and password are case-sensitive and
-          will be used for signing in. Entering an email is optional; it will
-          only be used for a future password recovery feature.
+          will be used for signing in.
           <br />
           <br />
           <span>Sign in -</span> Select the "Sign in" button in to sign in to a
