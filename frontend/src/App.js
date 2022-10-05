@@ -253,7 +253,7 @@ function App() {
               >
                 {/* Display pin's info */}
                 <div className="card">
-                  <label>Title</label>
+                  <label className={p.local ? "local" : "tourist"}>Title</label>
                   <h4 className="place">{p.title}</h4>
                   <label>Note</label>
                   <p className="desc">{p.desc}</p>
