@@ -10,7 +10,7 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = /*"https://ourmapserver.click";*/ "http://localhost:8800"; //: https://ourmapserver.click
+  const myUrl = "https://ourmapserver.click"; // http://localhost:8800 : https://ourmapserver.click
   const myStorage = window.localStorage;
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX;
 
@@ -117,7 +117,6 @@ function App() {
       rating,
       lat: newPlace.lat,
       long: newPlace.long,
-      local: checkLocal(newPlace, currentUser)
     };
     const requestOptions = {
       method: "POST",
