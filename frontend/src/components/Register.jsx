@@ -5,16 +5,29 @@ import { useState, useRef } from "react";
 export default function Register({ setShowRegister }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [coords, setCoords] = useState(null);
   const userRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // get user coordinates
+    function getLoc(pos) {
+      setCoords({
+        lat: pos.coords.latitude,
+        long: pos.coords.longitude,
+      });
+    }
+    navigator.geolocation.getCurrentPosition(getLoc);
+
     const newUser = {
       username: userRef.current.value,
       email: emailRef.current.value,
       password: passwordRef.current.value,
+      lat: coords.lat,
+      long: coords.long,
     };
 
     const requestOptions = {
@@ -22,7 +35,8 @@ export default function Register({ setShowRegister }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),
     };
-    fetch("https://ourmapserver.click/api/users/register", requestOptions)
+
+    fetch("http://localhost:8800/api/users/register", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
