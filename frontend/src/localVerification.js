@@ -26,23 +26,15 @@ const locRad = Math.sqrt(2131/Math.PI);
  * Krakow: Lat: 50.0647° N, Long: 19.9450° E.
  * Distance between Paris and Krakow should be 1275.6 km
  */
-function getDistance(long, lat, uLong, uLat) {
+ function getDistance(long, lat, uLong, uLat) {
     // we'll make the formula more readable by breaking it into different terms
-
-    r = 6371; //radius of earth
-    latDif = Math.abs(lat - uLat);
-    longDif = Math.abs(long - uLong);
-    inner = sinSqr(latDif / 2) + Math.cos(lat) * Math.cos(uLat) * sinSqr(longDif / 2);
-    distance = 2*r * Math.asin(sqrt(inner));
-    return distance;
-}
-
-/**
- * @param {Number} x Number to process
- * @returns {Number} sin^2 (x)
- */
-function sinSqr(x) {
-    return (1 - Math.cos(2*x))/2;
+    let r = 6371; //radius of earth
+    let latDif = Math.toRadians(lat - uLat);
+    let longDif = Math.toRadians(lon - uLong);
+    let a = Math.sin(latDif/2) * Math.sin(latDif/2) + Math.cos(Math.toRadians(lat))
+            * Math.cos(Math.toRadians(uLat)) * Math.sin(longDif/2) * Math.sin(longDif/2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return r * c;
 }
 
 /**
