@@ -16,12 +16,12 @@ label{
   margin: 3px 0;
 }
 
-label .local {
+.local {
   color: rgb(3, 132, 146);
   border-bottom: .5px solid rgb(3, 132, 146);
 }
 
-label .tourist {
+.tourist {
   color: rgb(255, 75, 75);
   border-bottom: .5px solid rgb(255, 75, 75);
 }
