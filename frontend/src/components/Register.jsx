@@ -6,6 +6,7 @@ export default function Register({ setShowRegister }) {
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [coords, setCoords] = useState(null);
+  const [addClicked, setAddClicked] = useState(false);
   const userRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
@@ -27,7 +28,7 @@ export default function Register({ setShowRegister }) {
       body: JSON.stringify(newUser),
     };
 
-    fetch("http://localhost:8800/api/users/register", requestOptions)
+    fetch("https://ourmapserver.click/api/users/register", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
@@ -59,6 +60,7 @@ export default function Register({ setShowRegister }) {
       });
     }
     navigator.geolocation.getCurrentPosition(getLoc);
+    setAddClicked(true);
   };
 
   return (
@@ -76,13 +78,18 @@ export default function Register({ setShowRegister }) {
           ref={passwordRef}
         />
 
-        <button
-          className="registerButton addLocation"
-          type="button"
-          onClick={handleAddLocation}
-        >
-          Add Current Location
-        </button>
+        {!addClicked && (
+          <button
+            className="registerButton addLocation"
+            type="button"
+            onClick={handleAddLocation}
+          >
+            Add Current Location
+          </button>
+        )}
+        {addClicked && (
+          <span className="success">Location recieved. Thank you!</span>
+        )}
         <button className="registerButton" type="submit">
           Register
         </button>

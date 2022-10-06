@@ -19,7 +19,7 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     };
-    fetch("http://localhost:8800/api/users/signin", requestOptions)
+    fetch("https://ourmapserver.click/api/users/signin", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
