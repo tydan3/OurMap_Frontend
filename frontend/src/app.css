@@ -14,16 +14,17 @@ label{
   width: max-content;
   font-size: 15px;
   margin: 3px 0;
+  border-bottom: .5px solid rgb(255, 75, 75);
 }
 
 .local {
-  color: rgb(3, 132, 146);
-  border-bottom: .5px solid rgb(3, 132, 146);
+  color: white;
+  background-color: rgb(1, 36, 86);
 }
 
 .tourist {
-  color: rgb(255, 75, 75);
-  border-bottom: .5px solid rgb(255, 75, 75);
+  color: black;
+  background-color: white;
 }
 .desc{
   font-size: 14px;
