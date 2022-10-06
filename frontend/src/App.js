@@ -289,7 +289,7 @@ function App() {
             {/* For viewing placed pins */}
             {p._id === currentPlaceId && (
               <Popup
-                className={"popup " + p.local ? "local" : "tourist"}
+                className="popup "
                 longitude={p.long}
                 latitude={p.lat}
                 closeButton={true}
@@ -298,7 +298,7 @@ function App() {
                 onClose={() => setCurrentPlaceId(null)}
               >
                 {/* Display pin's info */}
-                <div className="card">
+                <div className={"card " + p.local ? "local" : "tourist"}>
                   <label>Title</label>
                   <h4 className="place">{p.title}</h4>
                   <label>Note</label>
