@@ -10,7 +10,7 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = /*"https://ourmapserver.click";*/ "http://localhost:8800"; //: https://ourmapserver.click
+  const myUrl = "https://ourmapserver.click"; //"http://localhost:8800"; : https://ourmapserver.click
   const myStorage = window.localStorage;
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX;
 
@@ -273,10 +273,7 @@ function App() {
                 className="room"
                 style={{
                   fontSize: viewport.zoom * 6,
-                  color:
-                    p.username === currentUser
-                      ? "rgb(255, 75, 75)"
-                      : "dodgerblue",
+                  color: p.local ? "dodgerblue" : "rgb(255, 75, 75)",
                   cursor: "pointer",
                 }}
                 // Handle state when pin marker is clicked
