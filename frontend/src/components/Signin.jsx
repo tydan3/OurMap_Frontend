@@ -14,9 +14,6 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
       password: passwordRef.current.value,
     };
 
-    // try {
-    // const res = await axios.post("/users/signin", user);
-
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -36,6 +33,8 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
           return Promise.reject(error);
         }
         myStorage.setItem("user", data.username);
+        myStorage.setItem("userLat", data.lat);
+        myStorage.setItem("userLong", data.long);
         setCurrentUser(data.username);
         setShowSignin(false);
         setError(false);

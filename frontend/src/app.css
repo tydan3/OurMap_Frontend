@@ -12,11 +12,34 @@
 
 label{
   width: max-content;
-  color: rgb(255, 75, 75);
   font-size: 15px;
-  border-bottom: .5px solid rgb(255, 75, 75);
   margin: 3px 0;
+  border-bottom: .5px solid rgb(255, 75, 75);
 }
+
+.local {
+  color: white;
+  background-color: rgb(1, 36, 86);
+}
+
+.tourist {
+  color: black;
+  background-color: white;
+}
+
+.mapboxgl-popup-close-button {
+  color: rgb(255, 75, 75);
+}
+
+.lcal .mapboxgl-popup-content {
+  background-color: rgb(1, 36, 86);
+} 
+
+.trst .mapboxgl-popup-content {
+  background-color: white;
+}
+
+
 
 .desc{
   font-size: 14px;

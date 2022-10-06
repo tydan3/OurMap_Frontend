@@ -10,7 +10,7 @@ import Signin from "./components/Signin";
 import Howto from "./components/Howto";
 
 function App() {
-  const myUrl = "https://ourmapserver.click"; // http://localhost:8800 : https://ourmapserver.click
+  const myUrl = "https://ourmapserver.click"; //"http://localhost:8800"; : https://ourmapserver.click
   const myStorage = window.localStorage;
   const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX;
 
@@ -32,6 +32,47 @@ function App() {
     longitude: -101,
     zoom: 4,
   });
+
+  const locRad = Math.sqrt(2131 / Math.PI);
+
+  /**
+   * @param   {Number}   long    A pin
+   * @param   {Number}   lat    A second pin
+   * @param   {Number}   uLong    A pin
+   * @param   {Number}   uLat    A second pin
+   * @returns {Number}   Uses the Haversine formula to find the distance between two pins
+   * 0.5% error
+   * You can check out more here: https://www.omnicalculator.com/other/latitude-longitude-distance#the-haversine-formula-or-haversine-distance
+   * To test: Paris Lat: 48.8566, Long: 2.3522
+   * Krakow: Lat: 50.0647° N, Long: 19.9450° E.
+   * Distance between Paris and Krakow should be 1275.6 km
+   */
+  function getDistance(long, lat, uLong, uLat) {
+    // we'll make the formula more readable by breaking it into different terms
+    let r = 6371; //radius of earth
+    let radianConversion = Math.PI / 180;
+    let latDif = (lat - uLat) * radianConversion;
+    let longDif = radianConversion * (long - uLong);
+    let a =
+      Math.sin(latDif / 2) * Math.sin(latDif / 2) +
+      Math.cos(radianConversion * lat) *
+        Math.cos(radianConversion * uLat) *
+        Math.sin(longDif / 2) *
+        Math.sin(longDif / 2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return r * c;
+  }
+
+  /**
+   * @param   {JSON}   nuPin   Pin currently being placed
+   * @param   {JSON}   uPin    User's home pin
+   * @returns {Boolean} Returns whether the two points are considered local to each other
+   */
+
+  function checkLocal(long, lat, uLong, uLat) {
+    const distance = getDistance(long, lat, uLong, uLat);
+    return distance < locRad;
+  }
 
   // For geocoder search bar
   const mapRef = useRef();
@@ -117,6 +158,12 @@ function App() {
       rating,
       lat: newPlace.lat,
       long: newPlace.long,
+      local: checkLocal(
+        newPlace.long,
+        newPlace.lat,
+        myStorage.getItem("userLong"),
+        myStorage.getItem("userLat")
+      ),
     };
     const requestOptions = {
       method: "POST",
@@ -226,10 +273,7 @@ function App() {
                 className="room"
                 style={{
                   fontSize: viewport.zoom * 6,
-                  color:
-                    p.username === currentUser
-                      ? "rgb(255, 75, 75)"
-                      : "dodgerblue",
+                  color: p.local ? "dodgerblue" : "rgb(255, 75, 75)",
                   cursor: "pointer",
                 }}
                 // Handle state when pin marker is clicked
@@ -242,7 +286,7 @@ function App() {
             {/* For viewing placed pins */}
             {p._id === currentPlaceId && (
               <Popup
-                className="popup"
+                className={"popup " + (p.local ? "lcal" : "trst")}
                 longitude={p.long}
                 latitude={p.lat}
                 closeButton={true}
@@ -251,7 +295,7 @@ function App() {
                 onClose={() => setCurrentPlaceId(null)}
               >
                 {/* Display pin's info */}
-                <div className="card">
+                <div className={"card " + (p.local ? "local" : "tourist")}>
                   <label>Title</label>
                   <h4 className="place">{p.title}</h4>
                   <label>Note</label>
