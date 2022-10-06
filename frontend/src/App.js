@@ -298,7 +298,7 @@ function App() {
                 onClose={() => setCurrentPlaceId(null)}
               >
                 {/* Display pin's info */}
-                <div className={"card " + p.local ? "local" : "tourist"}>
+                <div className={"card " + (p.local ? "local" : "tourist")}>
                   <label>Title</label>
                   <h4 className="place">{p.title}</h4>
                   <label>Note</label>
