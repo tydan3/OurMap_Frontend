@@ -31,6 +31,14 @@ label{
   color: rgb(255, 75, 75);
 }
 
+.lcal .mapboxgl-popup-content-wrapper {
+  background-color: rgb(1, 36, 86);
+} 
+
+.trst .mapboxgl-popup-content-wrapper {
+  background-color: white;
+}
+
 
 
 .desc{

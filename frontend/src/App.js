@@ -289,7 +289,7 @@ function App() {
             {/* For viewing placed pins */}
             {p._id === currentPlaceId && (
               <Popup
-                className={"popup " + (p.local ? "local" : "tourist")}
+                className={"popup " + (p.local ? "lcal" : "trst")}
                 longitude={p.long}
                 latitude={p.lat}
                 closeButton={true}
