@@ -14,15 +14,12 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
       password: passwordRef.current.value,
     };
 
-    // try {
-    // const res = await axios.post("/users/signin", user);
-
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     };
-    fetch("https://ourmapserver.click/api/users/signin", requestOptions)
+    fetch("http://localhost:8800/api/users/signin", requestOptions)
       .then(async (response) => {
         const isJson = response.headers
           .get("content-type")
@@ -36,6 +33,8 @@ export default function Signin({ setShowSignin, myStorage, setCurrentUser }) {
           return Promise.reject(error);
         }
         myStorage.setItem("user", data.username);
+        myStorage.setItem("userLat", data.lat);
+        myStorage.setItem("userLong", data.long);
         setCurrentUser(data.username);
         setShowSignin(false);
         setError(false);
