@@ -13,15 +13,6 @@ export default function Register({ setShowRegister }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // get user coordinates
-    function getLoc(pos) {
-      setCoords({
-        lat: pos.coords.latitude,
-        long: pos.coords.longitude,
-      });
-    }
-    navigator.geolocation.getCurrentPosition(getLoc);
-
     const newUser = {
       username: userRef.current.value,
       email: emailRef.current.value,
@@ -59,6 +50,17 @@ export default function Register({ setShowRegister }) {
       });
   };
 
+  const handleAddLocation = () => {
+    // get user coordinates
+    function getLoc(pos) {
+      setCoords({
+        lat: pos.coords.latitude,
+        long: pos.coords.longitude,
+      });
+    }
+    navigator.geolocation.getCurrentPosition(getLoc);
+  };
+
   return (
     <div className="registerContainer">
       <div className="logo">
@@ -73,7 +75,17 @@ export default function Register({ setShowRegister }) {
           placeholder="Enter a password"
           ref={passwordRef}
         />
-        <button className="registerButton">Register</button>
+
+        <button
+          className="registerButton addLocation"
+          type="button"
+          onClick={handleAddLocation}
+        >
+          Add Current Location
+        </button>
+        <button className="registerButton" type="submit">
+          Register
+        </button>
         {success && (
           <span className="success">Success! You can now sign in.</span>
         )}
