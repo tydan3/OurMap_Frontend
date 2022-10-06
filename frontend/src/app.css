@@ -26,6 +26,13 @@ label{
   color: black;
   background-color: white;
 }
+
+.mapboxgl-popup-close-button {
+  color: rgb(255, 75, 75);
+}
+
+
+
 .desc{
   font-size: 14px;
 }
