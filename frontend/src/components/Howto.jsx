@@ -22,13 +22,16 @@ export default function Howto({ setShowHowto }) {
           <span> Here are some things you can do:</span>
           <br /> <span>Register -</span> Select the "Register" button to
           register an account. Your username and password are case-sensitive and
-          will be used for signing in.
+          will be used for signing in. Press the Add Location button to add your
+          current location; this data is only used to distinguish pins between
+          being local versus non-local. You may use the anon account to create
+          anonymous pins (credentials listed at the bottom of how-to)
           <br />
           <br />
           <span>Sign in -</span> Select the "Sign in" button to sign in to your
           registered account. When signed in, the pins you create will be
-          associated with your username and be colored red. Contact me if you
-          forget your information and I can reset it.
+          associated with your username. If you forget your information, contact
+          tydan.wk@gmail.com to reset your account.
           <br />
           <br />
           <span>Move the map -</span> Move the map by dragging with a mouse or
@@ -37,8 +40,8 @@ export default function Howto({ setShowHowto }) {
           <br />
           <br />
           <span>Search locations -</span> Enter a term into the search bar to
-          search for a location (e.g., cities, street addresses, restaurants,
-          etc.).
+          search for a location. You can search for real-world locations! (e.g.,
+          cities, street addresses, restaurants, etc.)
           <br />
           <br />
           <span>View pins -</span> View a pin by clicking or tapping on it to
@@ -47,13 +50,12 @@ export default function Howto({ setShowHowto }) {
           <br />
           <span>Create a pin -</span> Double-click or double-tap a spot to
           create a pin. <span>You must be signed-in to create a pin.</span> You
-          may use the anon account below if you do not want to create an
-          account.
+          may use the anon account listed below to create anonymous pins.
           <br />
           <br />
-          <span>Delete pins -</span> You may only delete pins that belong to
-          your account. To delete a pin, select your pin and click/press the
-          delete button in the pin's info window.
+          <span>Delete pins -</span> To delete a pin, select your pin and
+          click/press the delete button in the pin's info window. You may only
+          delete pins that belong to your account.
           <br />
           <br />
           <span>
